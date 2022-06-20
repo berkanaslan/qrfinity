@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:qrfinity/src/core/get_it.dart';
+import 'package:qrfinity/src/database/hive_database.dart';
 
-void main() {
+void main() async {
+  setupLocator();
+  await locator<HiveDatabase>().init();
+
   runApp(const QRFinity());
 }
 
@@ -9,6 +14,9 @@ class QRFinity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "QRFinity");
+    return const MaterialApp(
+      title: "QRFinity",
+      // TODO: ....
+    );
   }
 }

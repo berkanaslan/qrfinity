@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 
 class BodyWrapper extends StatefulWidget {
+  static const double BOTTOM_NAV_HEIGHT = 56;
+
   final Color backgroundColor;
   final Widget body;
 
@@ -18,7 +21,6 @@ class _BodyWrapperState extends State<BodyWrapper> with AutomaticKeepAliveClient
   late final Color backgroundColor;
   late final Widget body;
 
-  static const double _BOTTOM_NAV_HEIGHT = 56;
   static const double _BOTTOM_NAV_MARGIN = 16;
   static const double _BODY_BOTTOM_WHITESPACE = 16;
 
@@ -40,7 +42,7 @@ class _BodyWrapperState extends State<BodyWrapper> with AutomaticKeepAliveClient
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(flex: 90, child: body),
-          const SizedBox(height: _BOTTOM_NAV_HEIGHT + _BOTTOM_NAV_MARGIN + _BODY_BOTTOM_WHITESPACE),
+          const SizedBox(height: BodyWrapper.BOTTOM_NAV_HEIGHT + _BOTTOM_NAV_MARGIN + _BODY_BOTTOM_WHITESPACE),
         ],
       ),
     );

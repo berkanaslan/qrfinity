@@ -39,16 +39,9 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
         children: [
           _buildScanner(),
           IconButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  enableDrag: true,
-                  builder: (context) {
-                    return Column(
-                      children: const [],
-                    );
-                  },
-                );
+              onPressed: () async {
+                await Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => ScannedBarcodeView(scannedValue: "scannedValue")));
               },
               icon: AppIcon.SCANNER),
         ],
@@ -77,7 +70,8 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     }
 
     scannedValue = barcode.rawValue;
-    await Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScannedBarcodeView(scannedValue: scannedValue!)));
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ScannedBarcodeView(scannedValue: scannedValue!)));
 
     scannerController.start();
   }

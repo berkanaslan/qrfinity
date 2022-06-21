@@ -33,11 +33,11 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  PageView _buildPageView() {
+  Widget _buildPageView() {
     return PageView(
       controller: pageController,
       onPageChanged: _onPageChanged,
-      children: const [
+      children:  [
         BarcodeScannerPage(),
         BarcodeGeneratorPage(),
       ],

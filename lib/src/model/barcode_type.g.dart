@@ -34,8 +34,5 @@ class BarcodeTypeAdapter extends TypeAdapter<BarcodeType> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BarcodeTypeAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is BarcodeTypeAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

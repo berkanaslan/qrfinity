@@ -19,9 +19,4 @@ class Barcode extends StorableEntity {
   String? description;
 
   Barcode({this.type = BarcodeType.qr, required this.inputValue, this.name, this.description});
-
-  @override
-  String toString() {
-    return 'Barcode{type: $type, inputValue: $inputValue, name: $name, description: $description}';
-  }
 }

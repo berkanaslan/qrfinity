@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrfinity/src/core/get_it.dart';
 import 'package:qrfinity/src/database/hive_database.dart';
+import 'package:qrfinity/src/view/home/home_view.dart';
 
 void main() async {
   setupLocator();
@@ -16,6 +17,8 @@ class QRFinity extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "QRFinity",
+      home: HomeView(),
+      debugShowCheckedModeBanner: false,
       // TODO: ....
     );
   }

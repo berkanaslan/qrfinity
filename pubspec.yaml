@@ -13,8 +13,12 @@ dependencies:
     sdk: flutter
 
   hive: ^2.2.2
-  hive_flutter: ^1.1.0
+  ionicons: ^0.1.2
   get_it: ^7.2.0
+  qr_flutter: ^4.0.0
+  hive_flutter: ^1.1.0
+  google_fonts: ^3.0.1
+  mobile_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qrfinity/src/core/extension/context_extension.dart';
@@ -6,6 +5,7 @@ import 'package:qrfinity/src/core/theme/app_color.dart';
 import 'package:qrfinity/src/core/theme/app_icon.dart';
 import 'package:qrfinity/src/core/widget/cliprrect/app_border_radius.dart';
 import 'package:qrfinity/src/core/widget/container/opaque_container.dart';
+import 'package:qrfinity/src/core/widget/icon_button/app_icon_button.dart';
 
 class Scanner extends StatelessWidget {
   final double height;
@@ -26,13 +26,7 @@ class Scanner extends StatelessWidget {
     return ScannerWrapper(
       width: width,
       height: height,
-      scanner: kDebugMode
-          ? const Placeholder()
-          : MobileScanner(
-              controller: scannerController,
-              onDetect: onDetect,
-              allowDuplicates: false,
-            ),
+      scanner: MobileScanner(controller: scannerController, onDetect: onDetect, allowDuplicates: false),
     );
   }
 }
@@ -64,7 +58,7 @@ class TorchManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return AppIconButton(
       color: AppColor.WHITE,
       icon: ValueListenableBuilder(
         valueListenable: scannerController.torchState,
@@ -89,7 +83,7 @@ class CameraFacingManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return AppIconButton(
       color: AppColor.WHITE,
       icon: AppIcon.CAMERA_FACING,
       onPressed: () => scannerController.switchCamera(),

@@ -11,18 +11,27 @@ class QRPreview extends StatelessWidget {
     Key? key,
     this.height,
     required this.inputValue,
-    this.version = 1,
+    this.version = 2,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return QrImage(
       size: height,
-      padding: EdgeInsets.zero,
       version: version!,
       data: inputValue,
       foregroundColor: AppColor.WHITE,
       backgroundColor: AppColor.MIDNIGHT_BLUE,
     );
   }
+
+  static QrValidationResult generateQRValidationResult(String data) {
+    return QrValidator.validate(
+      data: data,
+      version: QrVersions.auto,
+      errorCorrectionLevel: QrErrorCorrectLevel.L,
+    );
+  }
+
+  
 }

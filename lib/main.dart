@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qrfinity/src/core/get_it.dart';
 import 'package:qrfinity/src/database/hive_database.dart';
-import 'package:qrfinity/src/view/home/scanned_barcode_view.dart';
+import 'package:qrfinity/src/view/home/home_view.dart';
 
 void main() async {
   setupLocator();
@@ -23,12 +23,10 @@ class QRFinity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "QRFinity",
-      home: const ScannedBarcodeView(
-          scannedValue: "Berkan ASLAN"), // ?? const HomeView(),
       debugShowCheckedModeBanner: false,
-      theme:
-          Theme.of(context).copyWith(textTheme: GoogleFonts.interTextTheme()),
+      title: "QRFinity",
+      home: const HomeView(),
+      theme: Theme.of(context).copyWith(textTheme: GoogleFonts.interTextTheme()),
     );
   }
 }

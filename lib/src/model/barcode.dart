@@ -18,5 +18,9 @@ class Barcode extends StorableEntity {
   @HiveField(3)
   String? description;
 
-  Barcode({this.type = BarcodeType.qr, required this.inputValue, this.name, this.description});
+  Barcode(
+      {this.type = BarcodeType.qr,
+      required this.inputValue,
+      this.name,
+      this.description});
 }

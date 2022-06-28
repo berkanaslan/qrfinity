@@ -9,7 +9,5 @@ class AppIcon {
   static const Icon TORCH_OFF = Icon(Ionicons.flash_off_outline);
   static const Icon COPY_CLIPBOARD = Icon(Ionicons.copy_outline);
   static const Icon SHARE = Icon(Ionicons.share_outline);
-
-  static const Icon TORCH_ON =
-      Icon(Ionicons.flash_outline, color: AppColor.YELLOW);
+  static const Icon TORCH_ON = Icon(Ionicons.flash_outline, color: AppColor.YELLOW);
 }

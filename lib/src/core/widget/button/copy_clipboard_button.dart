@@ -16,7 +16,7 @@ class CopyClipboardButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircularButton(
       icon: AppIcon.COPY_CLIPBOARD,
-      text: "Copy",
+      text: "Copy", // Translate
       color: AppColor.ORANGE,
       onPressed: () => _copy(context),
     );

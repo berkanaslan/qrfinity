@@ -3,6 +3,7 @@ import 'package:qrfinity/src/core/extension/context_extension.dart';
 import 'package:qrfinity/src/core/widget/container/opaque_container.dart';
 import 'package:qrfinity/src/core/widget/text/helper_text.dart';
 
+// TODO: Translate
 class ScannerHelperText extends StatelessWidget {
   const ScannerHelperText({Key? key}) : super(key: key);
 

@@ -32,6 +32,4 @@ class QRPreview extends StatelessWidget {
       errorCorrectionLevel: QrErrorCorrectLevel.L,
     );
   }
-
-  
 }

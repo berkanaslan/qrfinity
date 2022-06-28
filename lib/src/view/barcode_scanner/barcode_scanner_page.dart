@@ -5,7 +5,7 @@ import 'package:qrfinity/src/core/theme/app_color.dart';
 import 'package:qrfinity/src/core/widget/container/scanner_helper_text.dart';
 import 'package:qrfinity/src/core/widget/scaffold/body_wrapper.dart';
 import 'package:qrfinity/src/core/widget/scanner/scanner.dart';
-import 'package:qrfinity/src/view/home/scanned_barcode_view.dart';
+import 'package:qrfinity/src/view/barcode_scanner/scanned_barcode_view.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
   const BarcodeScannerPage({Key? key}) : super(key: key);

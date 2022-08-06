@@ -18,12 +18,20 @@ class ScannedBarcodeView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(flex: 3, child: QRPreview(inputValue: scannedValue)),
+            Expanded(flex: 3, child: _buildQrPreview()),
             Expanded(child: ScannedValue(scannedValue: scannedValue)),
             Expanded(child: ScannedValueActions(scannedValue: scannedValue)),
           ],
         ),
       ),
+    );
+  }
+
+  QRPreview _buildQrPreview() {
+    return QRPreview(
+      inputValue: scannedValue,
+      backgroundColor: AppColor.MIDNIGHT_BLUE,
+      foregroundColor: AppColor.WHITE,
     );
   }
 }

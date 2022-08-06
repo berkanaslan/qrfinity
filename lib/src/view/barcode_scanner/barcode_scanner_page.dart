@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qrfinity/src/core/extension/context_extension.dart';
+import 'package:qrfinity/src/core/get_it.dart';
 import 'package:qrfinity/src/core/theme/app_color.dart';
 import 'package:qrfinity/src/core/widget/container/scanner_helper_text.dart';
 import 'package:qrfinity/src/core/widget/scaffold/body_wrapper.dart';
 import 'package:qrfinity/src/core/widget/scanner/scanner.dart';
+import 'package:qrfinity/src/repository/barcode_repository.dart';
 import 'package:qrfinity/src/view/barcode_scanner/scanned_barcode_view.dart';
+import 'package:qrfinity/src/model/barcode.dart' as local_barcode;
 
 class BarcodeScannerPage extends StatefulWidget {
-  const BarcodeScannerPage({Key? key}) : super(key: key);
+  final MobileScannerController scannerController;
+
+  const BarcodeScannerPage({Key? key, required this.scannerController}) : super(key: key);
 
   @override
   State<BarcodeScannerPage> createState() => _BarcodeScannerPageState();
@@ -16,12 +21,15 @@ class BarcodeScannerPage extends StatefulWidget {
 
 class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
   late final MobileScannerController scannerController;
+  late final BarcodeRepository barcodeRepository;
+
   String? scannedValue;
 
   @override
   void initState() {
     super.initState();
-    scannerController = MobileScannerController();
+    scannerController = widget.scannerController;
+    barcodeRepository = locator<BarcodeRepository>();
   }
 
   @override
@@ -67,7 +75,15 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     }
 
     scannedValue = barcode.rawValue;
-    await Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScannedBarcodeView(scannedValue: scannedValue!)));
+
+    barcodeRepository.add(local_barcode.Barcode(
+      inputValue: scannedValue!,
+      addedAt: DateTime.now(),
+    ));
+
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return ScannedBarcodeView(scannedValue: scannedValue!);
+    }));
 
     scannerController.start();
   }

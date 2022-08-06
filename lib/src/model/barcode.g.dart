@@ -21,13 +21,14 @@ class BarcodeAdapter extends TypeAdapter<Barcode> {
       inputValue: fields[1] as String,
       name: fields[2] as String?,
       description: fields[3] as String?,
+      addedAt: fields[4] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, Barcode obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.type)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class BarcodeAdapter extends TypeAdapter<Barcode> {
       ..writeByte(2)
       ..write(obj.name)
       ..writeByte(3)
-      ..write(obj.description);
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.addedAt);
   }
 
   @override
@@ -43,8 +46,5 @@ class BarcodeAdapter extends TypeAdapter<Barcode> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BarcodeAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is BarcodeAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

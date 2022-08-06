@@ -1,7 +1,10 @@
+import 'package:hive/hive.dart';
 import 'package:qrfinity/src/model/storable_entity.dart';
 
 abstract class Repository<T extends StorableEntity> {
-  List<T> get();
+  Box<T> getBox();
+
+  List<T> getAll();
 
   Future<void> add(T t);
 

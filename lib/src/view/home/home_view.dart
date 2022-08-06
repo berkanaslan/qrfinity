@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qrfinity/src/core/theme/app_color.dart';
 import 'package:qrfinity/src/core/widget/navigation_bar/app_navigation_bar.dart';
 import 'package:qrfinity/src/view/barcode_generator/barcode_generator_page.dart';
@@ -14,12 +15,14 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  late final MobileScannerController scannerController;
   late final PageController pageController;
   int currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
+    scannerController = MobileScannerController();
     pageController = PageController(initialPage: 0, keepPage: true);
   }
 
@@ -37,9 +40,9 @@ class _HomeViewState extends State<HomeView> {
     return PageView(
       controller: pageController,
       onPageChanged: _onPageChanged,
-      children: const [
-        BarcodeScannerPage(),
-        BarcodeGeneratorPage(),
+      children: [
+        BarcodeScannerPage(scannerController: scannerController),
+        const BarcodeGeneratorPage(),
       ],
     );
   }
@@ -58,7 +61,16 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _onPageChanged(index) {
+    changeCameraStateByScreen(index);
     currentPageIndex = index;
     setState(() {});
+  }
+
+  void changeCameraStateByScreen(index) {
+    if (index == 0) {
+      scannerController.start();
+    } else {
+      scannerController.stop();
+    }
   }
 }

@@ -6,7 +6,12 @@ class BarcodeRepository implements Repository<Barcode> {
   static const String NAME = "barcode";
 
   @override
-  List<Barcode> get() {
+  Box<Barcode> getBox() {
+    return Hive.box<Barcode>(NAME);
+  }
+
+  @override
+  List<Barcode> getAll() {
     return Hive.box<Barcode>(NAME).values.toList();
   }
 

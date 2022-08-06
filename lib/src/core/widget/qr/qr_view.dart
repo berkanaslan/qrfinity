@@ -6,12 +6,16 @@ class QRPreview extends StatelessWidget {
   final double? height;
   final String inputValue;
   final int? version;
+  final Color? foregroundColor;
+  final Color backgroundColor;
 
   const QRPreview({
     Key? key,
     this.height,
     required this.inputValue,
-    this.version = 2,
+    this.version = QrVersions.auto,
+    this.foregroundColor,
+    this.backgroundColor = AppColor.WHITE,
   }) : super(key: key);
 
   @override
@@ -20,8 +24,9 @@ class QRPreview extends StatelessWidget {
       size: height,
       version: version!,
       data: inputValue,
-      foregroundColor: AppColor.WHITE,
-      backgroundColor: AppColor.MIDNIGHT_BLUE,
+      foregroundColor: foregroundColor,
+      backgroundColor: backgroundColor,
+      padding: EdgeInsets.zero,
     );
   }
 
